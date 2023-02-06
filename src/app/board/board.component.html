@@ -1,5 +1,6 @@
 <div class="board">
     <div class="board-inner">
+        <!-- Board content -->
         <div class="board-header">
             <div class="board-header-title">
                 <h5>board works!</h5>
@@ -7,9 +8,20 @@
         </div>
         <div class="board-cards">
             <app-card-box *ngFor="let item of tasks"></app-card-box>
-            <button (click)="addCard()" class="board-card-button">
+            <button (click)="openCard()" class="board-card-button" id="myBtn">
                 Ajouter un board
             </button>
         </div>
     </div>
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal" [ngClass]="[displayed]">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close" (click)="closeCard()">&times;</span>
+        <p>Some text in the Modal..</p>
+    </div>
+
 </div>
