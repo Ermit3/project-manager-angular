@@ -1,0 +1,15 @@
+<div class="board">
+    <div class="board-inner">
+        <div class="board-header">
+            <div class="board-header-title">
+                <h5>board works!</h5>
+            </div>
+        </div>
+        <div class="board-cards">
+            <app-card-box *ngFor="let item of tasks"></app-card-box>
+            <button (click)="addCard()" class="board-card-button">
+                Ajouter un board
+            </button>
+        </div>
+    </div>
+</div>
