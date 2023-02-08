@@ -1,16 +1,15 @@
 <div class="card">
     <div class="card-top">
-        <span class="card-top-label">Urgent</span>
-        <span class="card-top-label">Todo</span>
+        <span class="card-top-label" *ngFor="let label of card.labels">{{label.title}}</span>
     </div>
     <div class="card-middle">
-        <p>Task1</p>
-        <p>Lorem ipsum dolor sit...</p>
+        <p>{{card.title}}</p>
+        <p>{{card.description}}</p>
     </div>
     <div class="card-bottom">
         <div class="card-bottom-date">
             <span></span>
-            26 May
+            {{card.createdAt| date:'mediumDate'}}
         </div>
         <div class="card-bottom-todo">
             3/3

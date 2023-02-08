@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Board } from './models/board.model';
 
 @Component({
@@ -6,17 +6,28 @@ import { Board } from './models/board.model';
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 	title = '02-project-manager';
 
-	boards!: number[];
-	board!: Board[];
+	Boards: Board[] = [];
+	board!: Board;
 
 	ngOnInit() {
-		this.boards = [0];
+		this.board = new Board();
+		this.board.id = this.Boards.length;
+		this.board.title = "Board" + this.Boards.length;
+		this.board.createdDate = new Date();
+
+		this.Boards[0] = this.board;
 	}
 
 	addBoard() {
-		this.boards.push(0)
+		this.board = new Board();
+		this.board.id = this.Boards.length;
+		this.board.title = "Board" + this.Boards.length;
+		this.board.createdDate = new Date();
+
+		this.Boards.push(this.board);
+		console.log(this.Boards);
 	}
 }

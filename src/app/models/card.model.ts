@@ -7,9 +7,9 @@ export class Card {
     createdBy!: string;
     title!: string;
     description!: string;
-    deadline!: Date;
-    createdDate!: Date;
-    labels!: Label[];
-    tasks!: Task[];
+    deadline?: Date;
+    createdAt!: Date;
+    labels: Label[] = [];
+    tasks: Task[] = [];
     board!: Board;
 }

@@ -1,5 +1,5 @@
 <div class="container-flex">
-  <app-board *ngFor="let item of boards"></app-board>
+  <app-board *ngFor="let board of Boards" [board]="board"></app-board>
   <div class="board">
     <div class="board-inner">
       <button (click)="addBoard()" class="board-card-button">

@@ -4,6 +4,6 @@ export class Label {
     id!: number;
     title!: string;
     color!: string;
-    createdDate!: Date;
+    createdAt!: Date;
     card!: Card;
 }

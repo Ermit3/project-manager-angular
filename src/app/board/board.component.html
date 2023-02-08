@@ -3,11 +3,13 @@
         <!-- Board content -->
         <div class="board-header">
             <div class="board-header-title">
-                <h5>board works!</h5>
+                <h5>
+                    {{board.title|uppercase}} {{board.id}}
+                </h5>
             </div>
         </div>
         <div class="board-cards">
-            <app-card-box *ngFor="let item of tasks"></app-card-box>
+            <app-card-box *ngFor="let card of cards" [card]="card"></app-card-box>
             <button (click)="openCard()" class="board-card-button" id="myBtn">
                 Ajouter un board
             </button>
@@ -20,8 +22,80 @@
 
     <!-- Modal content -->
     <div class="modal-content">
-        <span class="close" (click)="closeCard()">&times;</span>
-        <p>Some text in the Modal..</p>
+        <span class="close" (click)="closeCard()">&times;</span><br>
+        <div class="card">
+            <div class="card-middle form">
+                <div class="input input-title">
+                    <label class="label-title">Titre</label><br>
+                    <input type="text" id="title" name="title" [(ngModel)]="title">
+                </div>
+                <div class="input input-description">
+                    <label class="label-description">Description</label><br>
+                    <input type="text" id="description" name="description" [(ngModel)]="description">
+                </div>
+                <div class="input input-deadline">
+                    <label class="label-deadline">Date</label><br>
+                    <input type="date" name="deadline" id="deadline" #deadline>
+                </div>
+                <div class="input input-labels">
+                    <label class="label-labels">Labels</label><br><br>
+                    <div>
+                        <span *ngFor="let label of labels" class="card-top-label">{{label.title}}</span>
+                    </div>
+                    <span class="card-top-label">Urgent</span>
+                    <span class="card-top-label">Todo</span><br>
+                    <div class="colors">
+                        <input type="radio" name="colors" id="red" class="radio display-none" value="red"
+                            [(ngModel)]="color">
+                        <label for="red" style="background-color: red;"></label>
+                        <input type="radio" name="colors" id="green" class="radio display-none" value="green"
+                            [(ngModel)]="color">
+                        <label for="green" style="background-color: limegreen;"></label>
+                        <input type="radio" name="colors" id="blue" class="radio display-none" value="blue"
+                            [(ngModel)]="color">
+                        <label for="blue" style="background-color: cyan;"></label>
+                        <input type="radio" name="colors" id="khaki" class="radio display-none" value="khaki"
+                            [(ngModel)]="color">
+                        <label for="khaki" style="background-color: khaki;"></label>
+                        <input type="radio" name="colors" id="purple" class="radio display-none" value="purple"
+                            [(ngModel)]="color">
+                        <label for="purple" style="background-color: purple;"></label>
+                        <input type="radio" name="colors" id="pink" class="radio display-none" value="pink"
+                            [(ngModel)]="color">
+                        <label for="pink" style="background-color: palevioletred;"></label>
+                    </div>
+                    <div *ngIf="color != ''">
+                        <input type="text" class="label-text" [(ngModel)]="labelText">
+                    </div>
+                    <div>
+                        <!-- <button (click)="cons()">cons</button> -->
+                        <button type="button" [disabled]="title.length < 1 || description.length < 1">
+                            Add Label
+                        </button>
+                    </div>
+                </div>
+                <div class="input input-tasks">
+                    <label class="label-tasks">Taches</label><br>
+                    <div class="tasks">
+                        <input type="checkbox" name="todo" id="todo">
+                        <label for="todo">Task01</label>
+                    </div>
+                </div>
+            </div>
+            <div class="card-bottom">
+                <div class="card-bottom-submit">
+                    <button class="submit"
+                        (click)="addCard(title, description, deadline.value, color, labelText, board)">
+                        Submit
+                    </button>
+                </div>
+                <div class="card-bottom-close">
+                    <button class="" (click)="closeCard()">
+                        close
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>
